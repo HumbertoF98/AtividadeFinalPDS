@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -209,11 +210,11 @@ export default class Register extends Component {
                 />
               </View>
 
-              <TouchableOpacity>
+              <TouchableHighlight>
                 <View style={styles.containerButton}>
-                  <Text style={styles.textButton}>Cadastrar</Text>
+                  <Text style={styles.textButton}>Enviar</Text>
                 </View>
-              </TouchableOpacity>
+              </TouchableHighlight>
             </View>
           </ScrollView>
         </View>
@@ -272,7 +273,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 20,
     alignItems: 'center',
-    backgroundColor: '#008080',
+    backgroundColor: 'red',
     height: 40,
     width: 300,
     borderRadius: 10,
@@ -306,7 +307,7 @@ const styles = StyleSheet.create({
   textButton: {
     color: 'white',
     textAlign: 'center',
-    fontSize: 17,
+    fontSize: 18,
   },
   containerButtonMaster: {
     margin: 20,
