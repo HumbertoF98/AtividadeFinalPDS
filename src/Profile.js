@@ -138,154 +138,152 @@ export default class Profile extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.inputWrap}>
-            <Icon name="user" style={styles.label} color="#7159c1" />
-            <TextInput
-              style={styles.textInput}
-              placeholderTextColor={'#191919'}
-              placeholder={'Digite seu nome'}
-              spellCheck={false}
-              value={this.state.name}
-              onChangeText={text => {
-                this.setState({
-                  name: text,
-                });
-              }}
-              returnKeyType="next"
-              blurOnSubmit={false}
-              onSubmitEditing={() => {
-                this.surnameTextInput.focus();
-              }}
-            />
-          </View>
-          <View style={styles.inputWrap}>
-            <Icon name="user" style={styles.label} color="#7159c1" />
-            <TextInput
-              style={styles.textInput}
-              placeholderTextColor={'#191919'}
-              placeholder={'Digite seu sobrenome'}
-              spellCheck={false}
-              value={this.state.surname}
-              returnKeyType="next"
-              onChangeText={text => {
-                this.setState({
-                  surname: text,
-                });
-              }}
-              ref={input => {
-                this.surnameTextInput = input;
-              }}
-              blurOnSubmit={false}
-              onSubmitEditing={() => {
-                this._cpfRef.getElement().focus();
-              }}
-            />
-          </View>
-
-          <View style={styles.inputWrap}>
-            <Icon name="id-card" style={styles.label} color="#7159c1" />
-            <TextInputMask
-              type={'cpf'}
-              value={this.state.document}
-              onChangeText={text => {
-                this.setState({
-                  document: text,
-                });
-              }}
-              style={styles.textInput}
-              placeholderTextColor="#191919"
-              placeholder="Digite seu CPF"
-              keyboardType="phone-pad"
-              returnKeyType="next"
-              ref={ref => (this._cpfRef = ref)}
-              blurOnSubmit={false}
-              onSubmitEditing={() => {
-                this._dayRef.getElement().focus();
-              }}
-            />
-          </View>
-
-          <View style={styles.inputWrap}>
-            <Icon name="birthday-cake" style={styles.label} color="#7159c1" />
-            <TextInputMask
-              type={'datetime'}
-              options={{
-                format: 'DD/MM/YYYY',
-              }}
-              value={this.state.date_of_birth}
-              onChangeText={text => {
-                this.setState({
-                  date_of_birth: text,
-                });
-              }}
-              style={styles.textInput}
-              placeholderTextColor="#191919"
-              placeholder="Digite sua data de nascimento"
-              keyboardType="phone-pad"
-              returnKeyType="next"
-              ref={ref => (this._dayRef = ref)}
-              blurOnSubmit={false}
-              onSubmitEditing={() => {
-                this.emailTextInput.focus();
-              }}
-            />
-          </View>
-
-          <View style={styles.inputWrap}>
-            <Entypo name="email" style={styles.label} color="#7159c1" />
-            <TextInput
-              onChangeText={text => this.validate(text)}
-              value={this.state.email}
-              style={styles.textInput}
-              placeholderTextColor="#191919"
-              placeholder="Digite seu email"
-              autoCompleteType="email"
-              keyboardType="email-address"
-              returnKeyType="next"
-              ref={input => {
-                this.emailTextInput = input;
-              }}
-              blurOnSubmit={false}
-              onSubmitEditing={() => {
-                this._phoneRef.getElement().focus();
-              }}
-              editable={this.props.editable}
-            />
-          </View>
-
-          <View style={styles.inputWrap}>
-            <Icon name="phone" style={styles.label} color="#7159c1" />
-            <TextInputMask
-              type={'cel-phone'}
-              value={this.state.telephone}
-              onChangeText={text => {
-                this.setState({
-                  telephone: text,
-                });
-              }}
-              style={styles.textInput}
-              placeholderTextColor="#191919"
-              placeholder="Digite seu telefone"
-              keyboardType="phone-pad"
-              textContentType="telephoneNumber"
-              dataDetectorTypes="phoneNumber"
-              returnKeyType="next"
-              ref={ref => (this._phoneRef = ref)}
-            />
-          </View>
-          <View style={{ marginBottom: 10 }}>
-            <TouchableOpacity
-              onPress={this.apiReactUpdate}>
-              <View style={styles.containerButton}>
-                <Text style={styles.textButton}>Atualizar dados</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-
+      <View style={styles.container}>
+        <View style={styles.inputWrap}>
+          <Icon name="user" style={styles.label} color="#7159c1" />
+          <TextInput
+            style={styles.textInput}
+            placeholderTextColor={'#191919'}
+            placeholder={'Digite seu nome'}
+            spellCheck={false}
+            value={this.state.name}
+            onChangeText={text => {
+              this.setState({
+                name: text,
+              });
+            }}
+            returnKeyType="next"
+            blurOnSubmit={false}
+            onSubmitEditing={() => {
+              this.surnameTextInput.focus();
+            }}
+          />
         </View>
-      </ScrollView >
+        <View style={styles.inputWrap}>
+          <Icon name="user" style={styles.label} color="#7159c1" />
+          <TextInput
+            style={styles.textInput}
+            placeholderTextColor={'#191919'}
+            placeholder={'Digite seu sobrenome'}
+            spellCheck={false}
+            value={this.state.surname}
+            returnKeyType="next"
+            onChangeText={text => {
+              this.setState({
+                surname: text,
+              });
+            }}
+            ref={input => {
+              this.surnameTextInput = input;
+            }}
+            blurOnSubmit={false}
+            onSubmitEditing={() => {
+              this._cpfRef.getElement().focus();
+            }}
+          />
+        </View>
+
+        <View style={styles.inputWrap}>
+          <Icon name="id-card" style={styles.label} color="#7159c1" />
+          <TextInputMask
+            type={'cpf'}
+            value={this.state.document}
+            onChangeText={text => {
+              this.setState({
+                document: text,
+              });
+            }}
+            style={styles.textInput}
+            placeholderTextColor="#191919"
+            placeholder="Digite seu CPF"
+            keyboardType="phone-pad"
+            returnKeyType="next"
+            ref={ref => (this._cpfRef = ref)}
+            blurOnSubmit={false}
+            onSubmitEditing={() => {
+              this._dayRef.getElement().focus();
+            }}
+          />
+        </View>
+
+        <View style={styles.inputWrap}>
+          <Icon name="birthday-cake" style={styles.label} color="#7159c1" />
+          <TextInputMask
+            type={'datetime'}
+            options={{
+              format: 'DD/MM/YYYY',
+            }}
+            value={this.state.date_of_birth}
+            onChangeText={text => {
+              this.setState({
+                date_of_birth: text,
+              });
+            }}
+            style={styles.textInput}
+            placeholderTextColor="#191919"
+            placeholder="Digite sua data de nascimento"
+            keyboardType="phone-pad"
+            returnKeyType="next"
+            ref={ref => (this._dayRef = ref)}
+            blurOnSubmit={false}
+            onSubmitEditing={() => {
+              this.emailTextInput.focus();
+            }}
+          />
+        </View>
+
+        <View style={styles.inputWrap}>
+          <Entypo name="email" style={styles.label} color="#7159c1" />
+          <TextInput
+            onChangeText={text => this.validate(text)}
+            value={this.state.email}
+            style={styles.textInput}
+            placeholderTextColor="#191919"
+            placeholder="Digite seu email"
+            autoCompleteType="email"
+            keyboardType="email-address"
+            returnKeyType="next"
+            ref={input => {
+              this.emailTextInput = input;
+            }}
+            blurOnSubmit={false}
+            onSubmitEditing={() => {
+              this._phoneRef.getElement().focus();
+            }}
+            editable={this.props.editable}
+          />
+        </View>
+
+        <View style={styles.inputWrap}>
+          <Icon name="phone" style={styles.label} color="#7159c1" />
+          <TextInputMask
+            type={'cel-phone'}
+            value={this.state.telephone}
+            onChangeText={text => {
+              this.setState({
+                telephone: text,
+              });
+            }}
+            style={styles.textInput}
+            placeholderTextColor="#191919"
+            placeholder="Digite seu telefone"
+            keyboardType="phone-pad"
+            textContentType="telephoneNumber"
+            dataDetectorTypes="phoneNumber"
+            returnKeyType="next"
+            ref={ref => (this._phoneRef = ref)}
+          />
+        </View>
+        <View style={{ marginTop: 30 }}>
+          <TouchableOpacity
+            onPress={this.apiReactUpdate}>
+            <View style={styles.containerButton}>
+              <Text style={styles.textButton}>Atualizar dados</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+      </View>
     );
   }
 }
@@ -333,7 +331,7 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
     marginLeft: 20,
     marginRight: 20,
-    marginTop: 2,
+    marginTop: 30,
   },
   sideMenuProfileIcon: {
     width: '100%',

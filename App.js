@@ -23,7 +23,7 @@ class NavigationDrawerStructure extends React.Component {
       <View style={{ flexDirection: 'row' }}>
         <Icon.Button
           onPress={this.toggleDrawer.bind(this)}
-          backgroundColor="#008080"
+          backgroundColor="#7159c1"
           name="bars"
           size={25}
           color={'white'}
@@ -39,9 +39,10 @@ const FirstActivity_StackNavigator = createStackNavigator(
       screen: Home,
       navigationOptions: ({ navigation }) => ({
         title: 'DENUNCIAS CUIABÁ',
+        headerTitleAlign: 'center',
         headerLeft: () => <NavigationDrawerStructure navigationProps={navigation} />,
         headerStyle: {
-          backgroundColor: '#008080',
+          backgroundColor: '#7159c1',
         },
         headerTintColor: '#fff',
       }),
@@ -55,9 +56,9 @@ const Profile_StackNavigator = createStackNavigator(
       navigationOptions: ({ navigation }) => ({
         title: 'DENUNCIAS CUIABÁ',
         headerTitleAlign: 'center',
-        headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+        headerLeft: () => <NavigationDrawerStructure navigationProps={navigation} />,
         headerStyle: {
-          backgroundColor: '#008080',
+          backgroundColor: '#7159c1',
         },
         headerTintColor: '#fff',
       }),
@@ -136,7 +137,7 @@ const AppNavigator = createDrawerNavigator(
   },
   {
     contentComponent: CustomSidebarMenu,
-    drawerWidth: Dimensions.get('window').width - 140,
+    drawerWidth: Dimensions.get('window').width - 200,
   },
 );
 

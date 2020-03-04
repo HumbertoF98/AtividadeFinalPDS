@@ -74,7 +74,7 @@ export default class CustomSidebarMenu extends Component {
         <View style={styles.closeButton}>
           <Icon.Button
             onPress={this.toggleDrawer}
-            backgroundColor="#008080"
+            backgroundColor="#7159c1"
             name="x"
             size={25}
             color={'white'}
@@ -108,7 +108,7 @@ export default class CustomSidebarMenu extends Component {
                     backgroundColor:
                       global.currentScreenIndex === key
                         ? 'transparent'
-                        : '#008080',
+                        : '#7159c1',
                   }}
                   key={key}>
                   <View style={styles.containerIcon}>
@@ -118,7 +118,7 @@ export default class CustomSidebarMenu extends Component {
                         fontSize: 30,
                         color:
                           this.props.activeItemKey === item.screenToNavigate
-                            ? '#C3D89C'
+                            ? 'yellow'
                             : 'white',
                         justifyContent: 'center',
                         alignSelf: 'center',
@@ -130,7 +130,7 @@ export default class CustomSidebarMenu extends Component {
                       fontSize: 15,
                       color:
                         this.props.activeItemKey === item.screenToNavigate
-                          ? '#C3D89C'
+                          ? 'yellow'
                           : 'white',
                     }}>
                     {item.navOptionName}
@@ -147,13 +147,13 @@ export default class CustomSidebarMenu extends Component {
 const styles = StyleSheet.create({
   //StyleSheet for MenuBar
   container: {
-    backgroundColor: '#008080',
+    backgroundColor: '#7159c1',
   },
   sideMenuContainer: {
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: '#008080',
+    backgroundColor: '#7159c1',
     paddingTop: 5,
     alignItems: 'center',
   },
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: '#008080',
+    backgroundColor: '#7159c1',
     alignItems: 'flex-end',
   },
   sideMenuProfileIcon: {
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   sidebarImage: {
     width: '100%',
     height: 1,
-    backgroundColor: '#008080',
+    backgroundColor: '#7159c1',
   },
   container2: {
     width: '100%',
