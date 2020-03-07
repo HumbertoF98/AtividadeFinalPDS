@@ -11,6 +11,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,7 +28,9 @@ export default class Login extends Component {
   }
 
   apiReact() {
-    fetch('https://dompixel.dev/api/auth/login', {
+    const baseUrl = BASE_URL;
+    console.log(baseUrl);
+    fetch('baseUrl', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -117,8 +120,7 @@ export default class Login extends Component {
                 />
               </View>
 
-              <TouchableOpacity
-                onPress={this.apiReact}>
+              <TouchableOpacity onPress={this.apiReact}>
                 <View style={styles.containerButton}>
                   <Text style={styles.textButton}>Login</Text>
                 </View>
@@ -127,8 +129,7 @@ export default class Login extends Component {
               <View style={styles.containerButtonMaster}>
                 <Text style={styles.text}>Não tem uma conta?</Text>
                 <View style={styles.containerButton2}>
-                  <TouchableOpacity
-                    onPress={this.apiReact}>
+                  <TouchableOpacity onPress={this.apiReact}>
                     <Text style={styles.textButton2}>Registre-se</Text>
                   </TouchableOpacity>
                 </View>
