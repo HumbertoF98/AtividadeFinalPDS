@@ -128,7 +128,7 @@ export default class Login extends Component {
                 <Text style={styles.text}>Não tem uma conta?</Text>
                 <View style={styles.containerButton2}>
                   <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Register')}>
+                    onPress={this.apiReact}>
                     <Text style={styles.textButton2}>Registre-se</Text>
                   </TouchableOpacity>
                 </View>
