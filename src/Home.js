@@ -24,7 +24,8 @@ export default class maps extends Component {
     super(props);
 
     this.state = {
-      markers: []
+      markers: [],
+      complaint: '',
     }
     this.handlePress = this.handlePress.bind(this);
   }
@@ -69,10 +70,10 @@ export default class maps extends Component {
             numberOfLines={4}
             textAlignVertical="top"
             maxLength={255}
-            value={this.state.question}
+            value={this.state.complaint}
             onChangeText={text => {
               this.setState({
-                question: text,
+                complaint: text,
               });
             }}
           />
