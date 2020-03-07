@@ -1,8 +1,9 @@
 # AtividadeFinalPDS
 Repositório criado para o projeto final da disciplina de projeto e desenvolvimento de software  - UFMT
+Desenvolvimento de um app para informar irregularidas em pontos da cidade de Cuiabá - MT
 
-Aluno: 
-RGA: 
+Aluno: Allan Biagio Hermann
+RGA: 201611901025
 
 Aluno: 
 RGA: 
