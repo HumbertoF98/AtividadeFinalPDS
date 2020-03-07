@@ -1,41 +1,67 @@
-import MapView from 'react-native-maps';
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import {
+  AppRegistry,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  Text,
+  View,
+} from 'react-native';
 
-export default class MapInfo extends Component {
+import MapView, { Marker } from 'react-native-maps';
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+export default class maps extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      question: '',
-    };
-    this.LatLng = {
-      latitude: -15.584651,
-      longitude: -56.080672,
-    };
+      markers: []
+    }
+    this.handlePress = this.handlePress.bind(this);
+  }
+  handlePress(e) {
+    this.setState({
+      markers: [
+        ...this.state.markers,
+        {
+          coordinate: e.nativeEvent.coordinate,
+        }
+      ]
+    })
   }
   render() {
     return (
       <View style={styles.container}>
         <MapView
+          style={styles.container}
           initialRegion={{
             latitude: -15.6426032,
             longitude: -56.0966032,
             latitudeDelta: 0.025,
             longitudeDelta: 0.0,
           }}
-          style={styles.map}>
-          <MapView.Marker
-            coordinate={{
-              latitude: -15.6311032,
-              longitude: -56.0966032,
-            }}
-            title={'Univag - Cristo Rei'}
-            description={'Arduino Day'}
-          />
+          onPress={this.handlePress}
+        >
+          {this.state.markers.map(marker => {
+            return (
+              <Marker key={marker.id} {...marker} >
+                <View style={styles.marker}>
+                  <Text style={styles.text}>{marker.cost}</Text>
+                </View>
+              </Marker>
+            )
+          })}
         </MapView>
         <View>
           <Text style={styles.title}>Conte-nos o que está acontecendo</Text>
           <TextInput
+            style={{ borderWidth: 1, borderColor: '#7159c1', margin: 5 }}
             multiline={true}
             numberOfLines={4}
             textAlignVertical="top"
@@ -60,39 +86,42 @@ export default class MapInfo extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: '80%',
     flex: 1,
-    backgroundColor: '#EEECE1',
-  },
-  textButton: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 15,
-  },
-  map: {
-    flex: 1,
-    margin: 10,
-  },
-  title: {
-    fontSize: 17,
-    marginLeft: 10,
-    marginTop: 10,
-  },
-  containerText: {
-    margin: 10,
+    backgroundColor: '#EEECE1'
   },
   containerButton: {
     alignSelf: 'center',
     justifyContent: 'center',
-    marginBottom: 15,
+    marginBottom: 30,
+    marginTop: 20,
     alignItems: 'center',
     backgroundColor: '#7159c1',
     height: 40,
     width: 250,
     borderRadius: 8,
   },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  textButton: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 15,
   },
+  marker: {
+    backgroundColor: "red",
+    borderRadius: 100,
+    paddingLeft: 5,
+    paddingRight: 15,
+    paddingHorizontal: 30
+
+  },
+  title: {
+    fontSize: 17,
+    marginLeft: 10,
+    marginTop: 10,
+  },
+  text: {
+    color: "#FFF",
+    fontWeight: "bold"
+  }
 });
+
+AppRegistry.registerComponent('maps', () => maps);
