@@ -6,6 +6,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import Register from './src/auth/Register';
 import Home from './src/Home';
 import Profile from './src/Profile';
+import ResetPassword from './src/auth/ResetPassword';
 import CustomSidebarMenu from './src/CustomSidebarMenu';
 import Login from './src/auth/Login';
 import AuthLoadingScreen from './src/auth/AuthLoadingScreen';
@@ -88,6 +89,17 @@ const Login_StackNavigator = createStackNavigator(
           backgroundColor: '#7159c1',
         },
         headerTintColor: '#fff',
+      }),
+    },
+    ResetPassword: {
+      screen: ResetPassword,
+      navigationOptions: ({ navigation }) => ({
+        title: 'DENUNCIAS CUIABÁ',
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#7159c1',
+        },
+        headerTintColor: '#FFF',
       }),
     },
     Register: {
