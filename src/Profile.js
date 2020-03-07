@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { TextInputMask } from 'react-native-masked-text';
 import AsyncStorage from '@react-native-community/async-storage';
-import { BASE_URLUser, BASE_URLMe } from 'react-native-dotenv';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class Profile extends Component {
   constructor(props) {
@@ -31,12 +31,12 @@ export default class Profile extends Component {
       refreshing: false,
       status: '',
       wholeResult: '',
+      user_token: '',
     };
     this.bootstrap();
     this.apiReact = this.apiReact.bind(this);
     this.apiReactUpdate = this.apiReactUpdate.bind(this);
   }
-
 
   onChangedDocument(text) {
     let newDocument = '';
@@ -64,13 +64,14 @@ export default class Profile extends Component {
 
   bootstrap = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
+    this.setState({ user_token: userToken });
     this.apiReact(userToken);
   };
 
   async apiReact(userToken) {
     this.setState({ loading: true });
-    const baseUrl = BASE_URLMe;
-    fetch(baseUrl, {
+    const baseUrl = BASE_URL;
+    fetch(baseUrl + '/me', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -82,8 +83,7 @@ export default class Profile extends Component {
         if (res.deleted_at) {
           alert('Você está banido!');
           this.props.navigation.navigate('WelcomeScreen');
-        }
-        else {
+        } else {
           this.setState({
             data: res,
             document: res.document,
@@ -105,14 +105,14 @@ export default class Profile extends Component {
 
   apiReactUpdate() {
     const formData = new FormData();
-    const base = BASE_URLUser;
+    const base = BASE_URL;
     formData.append('name', this.state.name);
     formData.append('email', this.state.email);
     formData.append('surname', this.state.surname);
     formData.append('document', this.state.document);
     formData.append('telephone', this.state.telephone);
     formData.append('date_of_birth', this.state.date_of_birth);
-    fetch(base + this.state.data.id, {
+    fetch(base + '/user/' + this.state.data.id, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -130,10 +130,11 @@ export default class Profile extends Component {
           });
           Alert.alert(
             'Dados atualizados com sucesso!',
-            JSON.stringify(result.data.message)
+            JSON.stringify(result.data.message),
           );
           this.bootstrap();
         } else {
+          console.log(result);
           Alert.alert('Erro!', 'Ocorreu um erro');
         }
       })
@@ -141,7 +142,6 @@ export default class Profile extends Component {
         Alert.alert('Erro!', error.toString());
       });
   }
-
 
   render() {
     return (
@@ -282,14 +282,12 @@ export default class Profile extends Component {
           />
         </View>
         <View style={{ marginTop: 30 }}>
-          <TouchableOpacity
-            onPress={this.apiReactUpdate}>
+          <TouchableOpacity onPress={this.apiReactUpdate}>
             <View style={styles.containerButton}>
               <Text style={styles.textButton}>Atualizar dados</Text>
             </View>
           </TouchableOpacity>
         </View>
-
       </View>
     );
   }

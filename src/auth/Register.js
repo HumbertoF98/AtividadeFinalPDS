@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TextInputMask } from 'react-native-masked-text';
-import { BASE_URLRegister } from 'react-native-dotenv';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class Register extends Component {
   constructor(props) {
@@ -30,7 +30,6 @@ export default class Register extends Component {
       password: '',
     };
     this.apiReact = this.apiReact.bind(this); // API
-    //this.textInput = {};
   }
 
   //Mask Password
@@ -55,8 +54,8 @@ export default class Register extends Component {
 
   apiReact() {
     //API from this Form
-    const baseUrl = BASE_URLRegister;
-    fetch(baseUrl, {
+    const baseUrl = BASE_URL;
+    fetch(baseUrl + '/register', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -259,9 +258,7 @@ export default class Register extends Component {
 
               <TouchableOpacity onPress={this.apiReact}>
                 <View style={styles.containerButton}>
-                  <Text style={styles.textButton}>
-                    Cadastrar
-                  </Text>
+                  <Text style={styles.textButton}>Cadastrar</Text>
                 </View>
               </TouchableOpacity>
 

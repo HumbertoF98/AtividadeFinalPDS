@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { BASE_URLForget } from 'react-native-dotenv';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class Login extends Component {
   constructor(props) {
@@ -25,8 +25,8 @@ export default class Login extends Component {
   }
 
   apiReact() {
-    const baseUrl = BASE_URLForget;
-    fetch(baseUrl, {
+    const baseUrl = BASE_URL;
+    fetch(baseUrl + '/auth/forget', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -86,14 +86,11 @@ export default class Login extends Component {
                 />
               </View>
 
-              <TouchableOpacity
-                onPress={this.apiReact}>
+              <TouchableOpacity onPress={this.apiReact}>
                 <View style={styles.containerButton}>
                   <Text style={styles.textButton}>Enviar</Text>
                 </View>
               </TouchableOpacity>
-
-
 
               <TouchableOpacity
                 style={styles.containerButton2}
@@ -134,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#7159c1',
     fontWeight: 'bold',
-    marginTop: 20
+    marginTop: 20,
   },
   body: {
     margin: 20,

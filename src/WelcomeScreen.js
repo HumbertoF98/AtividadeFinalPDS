@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default class WelcomeScreen extends Component {
-
   render() {
     return (
       <View style={styles.container}>
@@ -15,21 +14,16 @@ export default class WelcomeScreen extends Component {
         </View>
 
         <View style={styles.containerWelcome}>
-          <Text style={styles.textWelcome}>
-            Bem-vindo ao Denuncias Cuiabá
-          </Text>
+          <Text style={styles.textWelcome}>Bem-vindo ao Denuncias Cuiabá</Text>
         </View>
 
         <View style={styles.containerButtons}>
-
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('Login')}>
             <View style={styles.containerButton}>
               <Text style={{ color: 'white' }}>Login</Text>
             </View>
           </TouchableOpacity>
-
-
 
           <TouchableOpacity
             style={styles.containerButton2}

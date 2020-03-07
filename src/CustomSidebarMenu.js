@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Text, Image, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Text,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import { DrawerActions } from 'react-navigation-drawer';
 import Icon from 'react-native-vector-icons/Feather';
 import AsyncStorage from '@react-native-community/async-storage';
-import { BASE_URLMe } from 'react-native-dotenv';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class CustomSidebarMenu extends Component {
   constructor() {
@@ -44,8 +51,8 @@ export default class CustomSidebarMenu extends Component {
 
   async apiReact(userToken) {
     this.setState({ loading: true });
-    const baseUrl = BASE_URLMe;
-    fetch(baseUrl, {
+    const baseUrl = BASE_URL;
+    fetch(baseUrl + '/me', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -83,7 +90,7 @@ export default class CustomSidebarMenu extends Component {
           />
         </View>
         <View style={styles.sideMenuContainer}>
-          <Image ></Image>
+          <Image></Image>
           <View style={styles.sidebarImage} />
 
           <View style={styles.container2}>
@@ -92,12 +99,12 @@ export default class CustomSidebarMenu extends Component {
                 onPress={
                   item.screenToNavigate
                     ? () => {
-                      global.currentScreenIndex = key;
-                      this.props.navigation.navigate(item.screenToNavigate);
-                    }
+                        global.currentScreenIndex = key;
+                        this.props.navigation.navigate(item.screenToNavigate);
+                      }
                     : () => {
-                      this.facebookShare();
-                    }
+                        this.facebookShare();
+                      }
                 }
                 key={key}>
                 <View

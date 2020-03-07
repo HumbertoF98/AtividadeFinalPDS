@@ -18,7 +18,6 @@ function getRandomInt(min, max) {
 
 console.disableYellowBox = true;
 
-
 export default class maps extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +25,7 @@ export default class maps extends Component {
     this.state = {
       markers: [],
       complaint: '',
-    }
+    };
     this.handlePress = this.handlePress.bind(this);
   }
   handlePress(e) {
@@ -35,9 +34,9 @@ export default class maps extends Component {
         ...this.state.markers,
         {
           coordinate: e.nativeEvent.coordinate,
-        }
-      ]
-    })
+        },
+      ],
+    });
   }
   render() {
     return (
@@ -50,16 +49,15 @@ export default class maps extends Component {
             latitudeDelta: 0.025,
             longitudeDelta: 0.0,
           }}
-          onPress={this.handlePress}
-        >
+          onPress={this.handlePress}>
           {this.state.markers.map(marker => {
             return (
-              <Marker key={marker.id} {...marker} >
+              <Marker key={marker.id} {...marker}>
                 <View style={styles.marker}>
                   <Text style={styles.text}>{marker.cost}</Text>
                 </View>
               </Marker>
-            )
+            );
           })}
         </MapView>
         <View>
@@ -91,7 +89,7 @@ export default class maps extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#EEECE1'
+    backgroundColor: '#EEECE1',
   },
   containerButton: {
     alignSelf: 'center',
@@ -110,12 +108,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   marker: {
-    backgroundColor: "red",
+    backgroundColor: 'red',
     borderRadius: 100,
     paddingLeft: 5,
     paddingRight: 15,
-    paddingHorizontal: 30
-
+    paddingHorizontal: 30,
   },
   title: {
     fontSize: 17,
@@ -123,9 +120,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   text: {
-    color: "#FFF",
-    fontWeight: "bold"
-  }
+    color: '#FFF',
+    fontWeight: 'bold',
+  },
 });
 
 AppRegistry.registerComponent('maps', () => maps);

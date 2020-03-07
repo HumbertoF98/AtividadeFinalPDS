@@ -7,6 +7,7 @@ import {
   Text,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class AuthLoadingScreen extends React.Component {
   constructor(props) {
@@ -21,7 +22,8 @@ export default class AuthLoadingScreen extends React.Component {
   };
 
   async apiReact(userToken) {
-    fetch('https://dompixel.dev/api/me', {
+    const baseUrl = BASE_URL;
+    fetch('/me', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
