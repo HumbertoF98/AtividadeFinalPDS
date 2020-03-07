@@ -6,7 +6,6 @@ import {
   Alert,
   TouchableOpacity,
   TextInput,
-  ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -20,7 +19,7 @@ export default class Profile extends Component {
       document: '',
       lastRefresh: Date(Date.now()).toString(),
       filePath: {},
-      date_of_birth: '',
+      date_of_birth: null,
       telephone: '',
       name: '',
       surname: '',
@@ -116,6 +115,7 @@ export default class Profile extends Component {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'multipart/form-data',
+        Authorization: 'Bearer ' + this.state.user_token,
       },
       body: formData,
     })
@@ -126,13 +126,18 @@ export default class Profile extends Component {
             status: result.error,
             wholeResult: result,
           });
-          Alert.alert('Dados atualizados com sucesso!');
+          Alert.alert(
+            'Dados atualizados com sucesso!',
+            JSON.stringify(result.data.message)
+          );
           this.bootstrap();
         } else {
           Alert.alert('Erro!', 'Ocorreu um erro');
         }
       })
-      .catch(error => { });
+      .catch(error => {
+        Alert.alert('Erro!', error.toString());
+      });
   }
 
 

@@ -19,14 +19,14 @@ export default class Login extends Component {
       email: '',
       password: '',
     };
-    /*  this.apiReact = this.apiReact.bind(this); // API */
+    this.apiReact = this.apiReact.bind(this);
   }
 
   toggleSwitch() {
     this.setState({ showPassword: !this.state.showPassword });
   }
 
-  /* apiReact() {
+  apiReact() {
     fetch('https://dompixel.dev/api/auth/login', {
       method: 'POST',
       headers: {
@@ -58,7 +58,7 @@ export default class Login extends Component {
         this.props.navigation.navigate('Auth');
       });
   }
- */
+
   validate = text => {
     //validate email
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -118,7 +118,7 @@ export default class Login extends Component {
               </View>
 
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Home')}>
+                onPress={this.apiReact}>
                 <View style={styles.containerButton}>
                   <Text style={styles.textButton}>Login</Text>
                 </View>
