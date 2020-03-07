@@ -17,6 +17,7 @@
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-animate-loading-button": "^1.0.3",
+    "react-native-dotenv": "^0.2.0",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-maps": "0.26.1",
     "react-native-masked-text": "^1.13.0",
