@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { TextInputMask } from 'react-native-masked-text';
 import AsyncStorage from '@react-native-community/async-storage';
+import { BASE_URLUser, BASE_URLMe } from 'react-native-dotenv';
 
 export default class Profile extends Component {
   constructor(props) {
@@ -68,8 +69,8 @@ export default class Profile extends Component {
 
   async apiReact(userToken) {
     this.setState({ loading: true });
-
-    fetch('https://dompixel.dev/api/me', {
+    const baseUrl = BASE_URLMe;
+    fetch(baseUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -104,13 +105,14 @@ export default class Profile extends Component {
 
   apiReactUpdate() {
     const formData = new FormData();
+    const base = BASE_URLUser;
     formData.append('name', this.state.name);
     formData.append('email', this.state.email);
     formData.append('surname', this.state.surname);
     formData.append('document', this.state.document);
     formData.append('telephone', this.state.telephone);
     formData.append('date_of_birth', this.state.date_of_birth);
-    fetch('https://dompixel.dev/api/user/' + this.state.data.id, {
+    fetch(base + this.state.data.id, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

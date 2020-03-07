@@ -16,6 +16,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+console.disableYellowBox = true;
+
+
 export default class maps extends Component {
   constructor(props) {
     super(props);

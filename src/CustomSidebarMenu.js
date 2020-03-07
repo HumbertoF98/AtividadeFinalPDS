@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView, Text, Image, TouchableOpacity } from 'rea
 import { DrawerActions } from 'react-navigation-drawer';
 import Icon from 'react-native-vector-icons/Feather';
 import AsyncStorage from '@react-native-community/async-storage';
+import { BASE_URLMe } from 'react-native-dotenv';
 
 export default class CustomSidebarMenu extends Component {
   constructor() {
@@ -43,7 +44,8 @@ export default class CustomSidebarMenu extends Component {
 
   async apiReact(userToken) {
     this.setState({ loading: true });
-    fetch('https://dompixel.dev/api/me', {
+    const baseUrl = BASE_URLMe;
+    fetch(baseUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TextInputMask } from 'react-native-masked-text';
+import { BASE_URLRegister } from 'react-native-dotenv';
 
 export default class Register extends Component {
   constructor(props) {
@@ -54,7 +55,8 @@ export default class Register extends Component {
 
   apiReact() {
     //API from this Form
-    fetch('https://dompixel.dev/api/register', {
+    const baseUrl = BASE_URLRegister;
+    fetch(baseUrl, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
