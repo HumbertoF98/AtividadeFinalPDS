@@ -7,16 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-
 import MapView, { Marker } from 'react-native-maps';
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-console.disableYellowBox = true;
 
 export default class maps extends Component {
   constructor(props) {
@@ -28,16 +19,20 @@ export default class maps extends Component {
     };
     this.handlePress = this.handlePress.bind(this);
   }
+
   handlePress(e) {
+    // console.log(e.nativeEvent);
     this.setState({
       markers: [
         ...this.state.markers,
         {
           coordinate: e.nativeEvent.coordinate,
+          id: e.nativeEvent.position.x + e.nativeEvent.position.y,
         },
       ],
     });
   }
+
   render() {
     return (
       <View style={styles.container}>
