@@ -77,7 +77,9 @@ export default class Login extends Component {
     return (
       <View style={styles.containerMaster}>
         <View style={styles.body}>
-          <ScrollView>
+          <ScrollView
+            keyboardShouldPersistTaps={'handled'}
+          >
             <Text style={styles.headerText}>Login</Text>
 
             <View style={styles.container}>
