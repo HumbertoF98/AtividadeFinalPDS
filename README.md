@@ -5,8 +5,8 @@ Desenvolvimento de um app para informar irregularidas em pontos da cidade de Cui
 Aluno: Allan Biagio Hermann
 RGA: 201611901025
 
-Aluno: 
-RGA: 
+Aluno: Gabriel Isamu Ejima 
+RGA: 201521902011
 
 Aluno: 
 RGA: 
