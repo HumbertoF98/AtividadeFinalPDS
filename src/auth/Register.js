@@ -55,6 +55,7 @@ export default class Register extends Component {
   apiReact() {
     //API from this Form
     const baseUrl = BASE_URL;
+
     fetch(baseUrl + '/register', {
       method: 'POST',
       headers: {

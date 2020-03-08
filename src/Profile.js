@@ -5,6 +5,7 @@ import {
   Text,
   Alert,
   TouchableOpacity,
+  ScrollView,
   TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -71,6 +72,7 @@ export default class Profile extends Component {
   async apiReact(userToken) {
     this.setState({ loading: true });
     const baseUrl = BASE_URL;
+
     fetch(baseUrl + '/me', {
       method: 'POST',
       headers: {
@@ -106,6 +108,7 @@ export default class Profile extends Component {
   apiReactUpdate() {
     const formData = new FormData();
     const base = BASE_URL;
+
     formData.append('name', this.state.name);
     formData.append('email', this.state.email);
     formData.append('surname', this.state.surname);

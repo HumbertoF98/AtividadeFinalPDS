@@ -52,6 +52,7 @@ export default class CustomSidebarMenu extends Component {
   async apiReact(userToken) {
     this.setState({ loading: true });
     const baseUrl = BASE_URL;
+
     fetch(baseUrl + '/me', {
       method: 'POST',
       headers: {
@@ -99,12 +100,12 @@ export default class CustomSidebarMenu extends Component {
                 onPress={
                   item.screenToNavigate
                     ? () => {
-                        global.currentScreenIndex = key;
-                        this.props.navigation.navigate(item.screenToNavigate);
-                      }
+                      global.currentScreenIndex = key;
+                      this.props.navigation.navigate(item.screenToNavigate);
+                    }
                     : () => {
-                        this.facebookShare();
-                      }
+                      this.facebookShare();
+                    }
                 }
                 key={key}>
                 <View

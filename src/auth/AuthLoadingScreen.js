@@ -23,6 +23,7 @@ export default class AuthLoadingScreen extends React.Component {
 
   async apiReact(userToken) {
     const baseUrl = BASE_URL;
+
     fetch(baseUrl + '/me', {
       method: 'POST',
       headers: {

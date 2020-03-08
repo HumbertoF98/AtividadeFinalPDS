@@ -26,6 +26,7 @@ export default class Login extends Component {
 
   apiReact() {
     const baseUrl = BASE_URL;
+
     fetch(baseUrl + '/auth/forget', {
       method: 'POST',
       headers: {
