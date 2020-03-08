@@ -4,10 +4,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  Alert,
   Text,
   View,
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import AsyncStorage from '@react-native-community/async-storage';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class maps extends Component {
   constructor(props) {
@@ -16,21 +19,55 @@ export default class maps extends Component {
     this.state = {
       markers: [],
       complaint: '',
+      user_token: '',
     };
+    this.bootstrap();
     this.handlePress = this.handlePress.bind(this);
+    this.apiReact = this.apiReact.bind(this);
   }
 
+  bootstrap = async () => {
+    const userToken = await AsyncStorage.getItem('userToken');
+    this.setState({ user_token: userToken });
+  };
+
   handlePress(e) {
-    // console.log(e.nativeEvent);
     this.setState({
       markers: [
         ...this.state.markers,
         {
           coordinate: e.nativeEvent.coordinate,
-          id: e.nativeEvent.position.x + e.nativeEvent.position.y,
+          key: e.nativeEvent.position.x + e.nativeEvent.position.y,
         },
       ],
     });
+  }
+
+  apiReact() {
+    const baseUrl = BASE_URL;
+    fetch(baseUrl + '/pds', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.state.user_token,
+      },
+      body: JSON.stringify({
+        markers: this.state.markers,
+        complaint: this.state.complaint,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (!result.error && !result.errors) {
+          Alert.alert('Sucesso!', JSON.stringify(result.data.message));
+        } else {
+          Alert.alert('Erro!', JSON.stringify(result.data.errors));
+        }
+      })
+      .catch(error => {
+        Alert.alert('Ocorreu um erro', error.toString());
+      });
   }
 
   render() {
@@ -47,7 +84,7 @@ export default class maps extends Component {
           onPress={this.handlePress}>
           {this.state.markers.map(marker => {
             return (
-              <Marker key={marker.id} {...marker}>
+              <Marker key={marker.key} {...marker}>
                 <View style={styles.marker}>
                   <Text style={styles.text}>{marker.cost}</Text>
                 </View>
@@ -70,7 +107,7 @@ export default class maps extends Component {
               });
             }}
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.apiReact}>
             <View style={styles.containerButton}>
               <Text style={styles.textButton}>Enviar denúncia</Text>
             </View>
