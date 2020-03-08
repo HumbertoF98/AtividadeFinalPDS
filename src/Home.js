@@ -92,6 +92,7 @@ export default class maps extends Component {
             );
           })}
         </MapView>
+
         <View>
           <Text style={styles.title}>Conte-nos o que está acontecendo</Text>
           <TextInput
