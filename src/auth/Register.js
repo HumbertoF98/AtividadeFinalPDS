@@ -85,10 +85,7 @@ export default class Register extends Component {
           AsyncStorage.setItem('userToken', result.access_token);
           this.props.navigation.navigate('AuthLoading');
         } else {
-          Alert.alert(
-            'Ocorreu um erro no cadastro',
-            'Verifique seus dados e tente novamente, caso o erro persista entre em contato com a nossa equipe!',
-          );
+          Alert.alert('Erro!', JSON.stringify(result.errors.message));
         }
       })
       .catch(error => {
