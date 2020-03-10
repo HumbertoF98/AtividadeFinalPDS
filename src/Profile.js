@@ -200,12 +200,8 @@ export default class Profile extends Component {
             <Icon name="id-card" style={styles.label} color="#7159c1" />
             <TextInputMask
               type={'cpf'}
+              editable={false}
               value={this.state.document}
-              onChangeText={text => {
-                this.setState({
-                  document: text,
-                });
-              }}
               style={styles.textInput}
               placeholderTextColor="#191919"
               placeholder="Digite seu CPF"
