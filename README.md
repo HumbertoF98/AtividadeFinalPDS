@@ -15,15 +15,14 @@ RGA: 201521902011
 Aluno: Gabriel Augusto Queiroz de Almeida
 RGA: 201611901002
 
-Aluno:Michael Nunes Cardoso Macedo
+Aluno: Michael Nunes Cardoso Macedo
 RGA:201711901029
 
 Aluno: Gustavo da Costa Gonçalves 
 RGA: 201521901011
 
-Aluno:
-
-RGA:
+Aluno: Talles Emanuel Coelho Silva
+RGA: 201421901009
 
 Aluno: Pedro Paulo Santana Costa
 RGA: 201521901014
