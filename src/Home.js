@@ -62,8 +62,13 @@ export default class maps extends Component {
       .then(result => {
         if (!result.error && !result.errors) {
           Alert.alert('Sucesso!', JSON.stringify(result.data.message));
-        } else {
-          Alert.alert('Erro!', JSON.stringify(result.data.errors));
+          this.setState({
+            markers: [],
+            complaint: '',
+          });
+        }
+        else {
+          Alert.alert('Erro!', JSON.stringify(result.errors.message));
         }
       })
       .catch(error => {
