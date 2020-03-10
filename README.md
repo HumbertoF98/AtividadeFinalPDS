@@ -3,6 +3,9 @@
 Repositório criado para o projeto final da disciplina de projeto e desenvolvimento de software - UFMT
 Desenvolvimento de um app para informar irregularidas em pontos da cidade de Cuiabá - MT
 
+Aluno: Humberto Mariano Gaia Filho 
+RGA: 201611901026
+
 Aluno: Allan Biagio Hermann
 RGA: 201611901025
 
@@ -18,8 +21,6 @@ RGA:201711901029
 Aluno: Gustavo da Costa Gonçalves 
 RGA: 201521901011
 
-Aluno:
-RGA:
 
 Aluno:
 RGA:
